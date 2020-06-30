@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.8.2.js" ></script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body,html{
+				height: 100%;
+			}
+			body{
+				background-color: black;
+			}
+			.active{
+				width: 16px;
+				position: absolute;
+				top: -20px;
+				left: 0px;
+			}
+		</style>
+		<script src="js/jquery-1.8.2.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				//每3秒出来五朵雪花
+				setInterval(function(){
+					for(var i=0;i<10;i++){
+						var img1 = $("<img />");
+						var n = Math.ceil(Math.random()*19);//随机一个[1-19]的数
+						img1.addClass("active").attr("src","img/snowflake"+n+".png");
+						//给个随机位置
+						img1.css("left",Math.random()*98+"%");
+						img1.appendTo($("body"));
+						var h = $(window).height()-(Math.random()*80+20);
+						//雪花下落
+						var s =Math.ceil(Math.random()*10000)+5000;//随机3000-5000的数
+						img1.animate({
+							top:h
+						},s,"linear",function(){
+							$(this).remove();
+						})
+					}
+				},3000)
+			})
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
